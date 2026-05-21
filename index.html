@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NETTSPEND | Home</title>
+    <title>MAKE IT OUT THE UNDERGROUND SIM // PRESTIGE</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
 </head>
-<body class="home-body">
-
-    <nav class="navbar">
-        <div class="logo">NETTSPEND</div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="timeline.html">Timeline</a></li>
-            <li><a href="interact.html">Interactive</a></li>
-        </ul>
-    </nav>
-
-    <main class="hero-full">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h1 class="glitch-text" data-text="NETTSPEND">NETTSPEND</h1>
-            <p class="subtitle">FUTURE OF THE UNDERGROUND</p>
-            
-            <div class="cta-container">
-                <a href="about.html" class="enter-btn">ENTER THE VAULT</a>
+<body>
+    <div class="game-container">
+        <aside class="stats-panel">
+            <div class="logo">MAKE IT OUT THE UNDERGROUND SIM</div>
+            <div class="stat-box">
+                <span class="label">TOTAL_PLAYS</span>
+                <div id="play-count" class="big-number">0</div>
             </div>
-        </div>
-    </main>
+            <div class="stat-box">
+                <span class="label">PLAYS_PER_SECOND</span>
+                <div id="pps-count" class="small-number">0</div>
+            </div>
+            <div id="console-log"></div>
+        </aside>
 
-    <footer class="home-footer">
-        <p>FOR EDUCATIONAL PURPOSES • PROGRAMMING CLASS 2026</p>
-    </footer>
+        <main class="click-area">
+            <button id="main-clicker">
+                <span class="click-text">RELEASE SINGLE</span>
+            </button>
+        </main>
 
+        <aside class="shop-panel">
+            <div class="shop-header">ADD FEATURES</div>
+            <div id="shop-items">
+                </div>
+        </aside>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
