@@ -2,7 +2,7 @@
 :root {
     --bg: #0b0c10;
     --panel-bg: #14171c;
-    --accent: #8b5cf6; /* Electric Purple */
+    --accent: #61f65c; /* Electric Purple */
     --text: #ffffff;
     --text-dim: #64748b;
     --border: #262a33;
@@ -205,3 +205,50 @@ body {
 .up { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
 .down { color: #ff0000; text-shadow: 0 0 5px #ff0000; }
 .neutral { color: #888; }
+#charts-container {
+    background: #121212;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 400px;
+}
+
+.chart-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #282828;
+    transition: background 0.3s;
+}
+
+.chart-item:hover {
+    background: #282828;
+}
+
+.rank-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 40px;
+    color: #1db954; /* Green */
+}
+
+.chart-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Makes them look like profile pics */
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.chart-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.chart-name { font-weight: bold; }
+.chart-pps { font-size: 0.8rem; color: #b3b3b3; }
+
+.trend.up { color: #1db954; }
+.trend.down { color: #ff4d4d; }
+.trend.neutral { color: #777; }

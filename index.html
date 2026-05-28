@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAKE IT OUT THE UNDERGROUND SIM // PRESTIGE</title>
+    <title>MAKE IT OUT THE UNDERGROUND // PRESTIGE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <aside class="shop-panel">
+    <div class="shop-header">HIRE TEAM (Click Boosts)</div>
+    <div id="staff-items"></div> <div class="shop-header">SIGN ARTISTS (Passive Income)</div>
+    <div id="shop-items"></div> </aside>
+    <div class="stat-box">
+    <span class="label">STREAMS_PER_CLICK</span>
+    <div id="spc-count" class="small-number">1</div>
+</div>
     <div class="game-container">
         <aside class="stats-panel">
-            <div class="logo">MAKE IT OUT THE UNDERGROUND SIM</div>
+            <div class="logo">MAKE IT OUT THE UNDERGROUND</div>
             <div class="stat-box">
                 <span class="label">TOTAL_PLAYS</span>
                 <div id="play-count" class="big-number">0</div>
@@ -18,6 +26,13 @@
                 <span class="label">PLAYS_PER_SECOND</span>
                 <div id="pps-count" class="small-number">0</div>
             </div>
+            
+            <div id="charts-container">
+                <h2>🔥 The Hot 100</h2>
+                <div id="chart-list">
+                    </div>
+            </div>
+
             <div id="console-log"></div>
         </aside>
 
@@ -33,21 +48,7 @@
                 </div>
         </aside>
     </div>
+
     <script src="script.js"></script>
-    <div class="chart-container">
-    <h3>Underground Top 5</h3>
-    <table id="artist-chart">
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>Artist</th>
-                <th>Trend</th>
-                <th>Velocity</th>
-            </tr>
-        </thead>
-        <tbody id="chart-body">
-            </tbody>
-    </table>
-</div>
 </body>
 </html>
