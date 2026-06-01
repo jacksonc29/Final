@@ -1,8 +1,7 @@
-/* --- FULL MODERN MINIMALIST CLICKER STYLES --- */
 :root {
     --bg: #0b0c10;
     --panel-bg: #14171c;
-    --accent: #61f65c; /* Electric Purple */
+    --accent: #61f65c; /* Neon Green */
     --text: #ffffff;
     --text-dim: #64748b;
     --border: #262a33;
@@ -10,7 +9,6 @@
 
 * {
     box-sizing: border-box;
-    cursor: default;
     transition: all 0.2s ease-in-out;
 }
 
@@ -22,10 +20,10 @@ body {
     overflow: hidden;
 }
 
-/* Layout Grid */
+/* Layout Grid - Fixed for 2 Clean Panels */
 .game-container {
     display: grid;
-    grid-template-columns: 280px 1fr 480px; /* Widened for bigger cards */
+    grid-template-columns: 340px 1fr; /* Sidebar width + Flexible main workspace */
     height: 100vh;
     padding: 20px;
     gap: 20px;
@@ -40,10 +38,25 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    height: 100%;
 }
 
 .shop-panel {
     overflow-y: auto;
+}
+
+/* Shop Section Headers */
+.shop-header {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.shop-header:not(:first-child) {
+    margin-top: 30px;
 }
 
 /* Logo & Stats */
@@ -73,40 +86,77 @@ body {
     font-weight: 700;
 }
 
+.small-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Workspace Area Wrapper */
+.main-workspace {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Horizontal Top Stats Bar */
+.top-stats-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    background: var(--panel-bg);
+    padding: 20px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+}
+
 /* --- BIG ARTIST CARDS --- */
 .upgrade {
     display: flex;
     align-items: center;
     background: #1e2229;
-    padding: 15px; /* Spacious padding */
+    padding: 15px;
     margin-bottom: 15px;
     border-radius: 20px;
     cursor: pointer;
     border: 1px solid transparent;
     position: relative;
+    overflow: hidden;
 }
 
 .upgrade:hover {
     background: #262b35;
     border-color: var(--accent);
-    transform: translateX(10px);
+    transform: translateX(5px);
 }
 
+/* State Adjustments */
 .upgrade.locked {
-    opacity: 0.3;
+    opacity: 0.15;
     filter: grayscale(1);
-    pointer-events: none; /* Can't click if locked */
+    pointer-events: none;
+}
+
+.upgrade.insufficient {
+    opacity: 0.6;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.upgrade.affordable {
+    border-color: rgba(97, 246, 92, 0.2);
+    box-shadow: 0 4px 20px rgba(97, 246, 92, 0.05);
 }
 
 /* BIG PICTURES */
 .artist-img {
-    width: 120px;  /* Large size */
-    height: 120px; /* Large size */
+    width: 90px;  /* Clean upscale */
+    height: 90px; 
     border-radius: 15px;
     object-fit: cover;
     margin-right: 20px;
-    background: #333;
+    background: #252a33;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    flex-shrink: 0;
 }
 
 .upg-info {
@@ -114,27 +164,31 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 2;
 }
 
 .name {
     display: block;
     font-weight: 800;
-    font-size: 1.3rem; /* Larger text */
+    font-size: 1.1rem;
     margin-bottom: 4px;
 }
 
 .cost {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--accent);
     font-weight: 700;
 }
 
 .count {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.05); /* Ghosted background number */
+    color: rgba(255, 255, 255, 0.03); /* Ghosted background layout placement */
     position: absolute;
-    right: 20px;
+    right: 15px;
+    bottom: -5px;
+    z-index: 1;
+    user-select: none;
 }
 
 /* Main Clicker */
@@ -142,100 +196,91 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--panel-bg);
+    border-radius: 24px;
+    border: 1px solid var(--border);
 }
 
+/* Find your #main-clicker section and update it to this: */
 #main-clicker {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     background: radial-gradient(circle, #252a33 0%, #14171c 100%);
     border: 2px solid var(--border);
-    color: white;
+    color: #ffffff !important; /* Forces the text to be pure white */
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     cursor: pointer;
     box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.click-text {
+    color: #ffffff !important;
+    pointer-events: none; /* Prevents the text layer from blocking button clicks */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+}
+
+#main-clicker:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(97, 246, 92, 0.15);
 }
 
 #main-clicker:active {
     transform: scale(0.94);
 }
 
-/* Scrollbar Style */
-.shop-panel::-webkit-scrollbar {
-    width: 6px;
-}
-.shop-panel::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 10px;
+/* Bottom System Logs & Charts Split */
+.bottom-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 1100px) {
-    .game-container {
-        grid-template-columns: 1fr;
-        overflow-y: auto;
-    }
-    .stats-panel, .shop-panel { height: auto; }
-    .upgrade { margin-right: 0; }
-}
-.chart-container {
-    background: #121212;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    font-family: 'Courier New', Courier, monospace; /* Underground aesthetic */
+#charts-container, #console-log {
+    background: var(--panel-bg);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    padding: 25px;
+    height: 220px;
 }
 
-#artist-chart {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#artist-chart th {
-    text-align: left;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-}
-
-#artist-chart td {
-    padding: 10px 0;
-}
-
-.up { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
-.down { color: #ff0000; text-shadow: 0 0 5px #ff0000; }
-.neutral { color: #888; }
 #charts-container {
-    background: #121212;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    max-width: 400px;
+    overflow-y: auto;
+}
+
+#charts-container h2 {
+    font-size: 0.9rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
 }
 
 .chart-item {
     display: flex;
     align-items: center;
-    padding: 12px;
-    border-bottom: 1px solid #282828;
-    transition: background 0.3s;
-}
-
-.chart-item:hover {
-    background: #282828;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
 }
 
 .rank-number {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
-    width: 40px;
-    color: #1db954; /* Green */
+    width: 35px;
+    color: var(--accent);
 }
 
 .chart-img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Makes them look like profile pics */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     margin-right: 15px;
     object-fit: cover;
 }
@@ -246,9 +291,42 @@ body {
     flex-grow: 1;
 }
 
-.chart-name { font-weight: bold; }
-.chart-pps { font-size: 0.8rem; color: #b3b3b3; }
+.chart-name { font-weight: bold; font-size: 0.9rem; }
+.chart-pps { font-size: 0.75rem; color: var(--text-dim); }
 
-.trend.up { color: #1db954; }
+.trend { font-size: 0.9rem; }
+.trend.up { color: var(--accent); }
 .trend.down { color: #ff4d4d; }
-.trend.neutral { color: #777; }
+.trend.neutral { color: var(--text-dim); }
+
+#console-log {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--accent);
+    font-size: 0.8rem;
+    overflow-y: auto;
+    white-space: pre-line;
+}
+
+/* Scrollbar Style */
+.shop-panel::-webkit-scrollbar, #charts-container::-webkit-scrollbar, #console-log::-webkit-scrollbar {
+    width: 4px;
+}
+.shop-panel::-webkit-scrollbar-thumb, #charts-container::-webkit-scrollbar-thumb, #console-log::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1100px) {
+    .game-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow-y: auto;
+    }
+    .bottom-dashboard {
+        grid-template-columns: 1fr;
+    }
+    .shop-panel {
+        max-height: 500px;
+    }
+}
